@@ -4,8 +4,10 @@ import 'package:vetqure_task/widgets/profile_view.dart';
 
 class TopNavBar extends StatelessWidget {
   final double sidebarwidth;
-  TopNavBar({super.key, required this.sidebarwidth});
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  TopNavBar({
+    super.key,
+    required this.sidebarwidth,
+  });
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -24,11 +26,7 @@ class TopNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           if (screenWidth < 1300)
-            IconButton(
-                onPressed: () {
-                  _toggleDrawer(context);
-                },
-                icon: const Icon(Icons.menu)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
           Text(
             'Title',
             style: TextStyle(
@@ -71,13 +69,5 @@ class TopNavBar extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  void _toggleDrawer(BuildContext context) {
-    if (_scaffoldKey.currentState!.isDrawerOpen) {
-      Navigator.of(context).pop(); // Close the drawer
-    } else {
-      _scaffoldKey.currentState!.openDrawer(); // Open the drawer
-    }
   }
 }

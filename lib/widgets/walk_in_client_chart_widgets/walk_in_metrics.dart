@@ -4,8 +4,7 @@ import 'package:vetqure_task/widgets/walk_in_client_chart_widgets/metrics_card.d
 class DashboardMetrics extends StatelessWidget {
   final bool isLargeScreen;
 
-  const DashboardMetrics({Key? key, required this.isLargeScreen})
-      : super(key: key);
+  const DashboardMetrics({super.key, required this.isLargeScreen});
 
   @override
   Widget build(BuildContext context) {

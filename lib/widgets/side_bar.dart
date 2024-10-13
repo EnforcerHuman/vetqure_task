@@ -9,45 +9,73 @@ class SideBarWidget extends StatelessWidget {
     return Container(
       width: 200,
       color: AppColors.drawerColor,
-      child: Column(
-        children: [
-          Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    child: Image.asset('assets/images/Img.png'),
-                  ),
-                  const Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Name',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Icon(Icons.edit_square)
-                    ],
-                  ),
-                  const SideBarTitle(
-                      icon: Icons.dashboard, categoryname: 'DashBoard'),
-                  const SideBarTitle(
-                      icon: Icons.calendar_month, categoryname: 'Calender'),
-                  const SideBarTitle(
-                      icon: Icons.folder, categoryname: 'Client'),
-                  const SideBarTitle(
-                      icon: Icons.person, categoryname: 'Profile'),
-                  // const SideBarTitle(
-                  //     icon: Icons., categoryname: 'DashBoard'),
-                  const SideBarTitle(
-                      icon: Icons.calendar_month, categoryname: 'Calender'),
-                  const SideBarTitle(
-                      icon: Icons.dashboard, categoryname: 'DashBoard'),
-                  const SideBarTitle(
-                      icon: Icons.calendar_month, categoryname: 'Calender'),
-                ],
-              )),
-        ],
-      ),
+      child: const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ProfileSection(),
+              SideBarTitle(icon: Icons.dashboard, categoryname: 'DashBoard'),
+              SizedBox(
+                height: 10,
+              ),
+              SideBarTitle(
+                  icon: Icons.calendar_month, categoryname: 'Calender'),
+              SizedBox(
+                height: 10,
+              ),
+              SideBarTitle(icon: Icons.folder, categoryname: 'Client'),
+              SizedBox(
+                height: 10,
+              ),
+              SideBarTitle(icon: Icons.person, categoryname: 'Profile'),
+              SizedBox(
+                height: 10,
+              ),
+              SideBarTitle(
+                  icon: Icons.network_cell_sharp, categoryname: 'Finance'),
+              SizedBox(
+                height: 10,
+              ),
+              SideBarTitle(
+                  icon: Icons.local_shipping, categoryname: 'Inventory'),
+              SizedBox(
+                height: 10,
+              ),
+              SideBarTitle(icon: Icons.shopping_bag, categoryname: 'Order'),
+              SizedBox(
+                height: 40,
+              ),
+              SideBarTitle(icon: Icons.logout, categoryname: 'Logout'),
+            ],
+          )),
+    );
+  }
+}
+
+class ProfileSection extends StatelessWidget {
+  const ProfileSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        CircleAvatar(
+          child: Image.asset('assets/images/Img.png'),
+        ),
+        TextButton.icon(
+          icon: const Text(
+            'Name',
+            style: TextStyle(color: AppColors.primaryColor),
+          ),
+          label: const Icon(
+            Icons.edit_square,
+            color: AppColors.primaryColor,
+          ),
+          onPressed: () {},
+        )
+      ],
     );
   }
 }
@@ -72,7 +100,7 @@ class SideBarTitle extends StatelessWidget {
         ),
         Text(
           categoryname,
-          style: const TextStyle(color: Colors.white, fontSize: 18),
+          style: const TextStyle(color: AppColors.primaryColor, fontSize: 18),
         )
       ]),
     );

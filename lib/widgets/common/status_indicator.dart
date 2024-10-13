@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class StatusIndicator extends StatelessWidget {
   final Color color;
   final String text;
-  final double width; // Keep this parameter for custom widths
+  final double width;
 
   const StatusIndicator({
     super.key,

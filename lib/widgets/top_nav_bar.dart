@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:vetqure_task/widgets/nav_item.dart';
+import 'package:vetqure_task/widgets/profile_view.dart';
 
 class TopNavBar extends StatelessWidget {
-  const TopNavBar({super.key});
-
+  final double sidebarwidth;
+  TopNavBar({super.key, required this.sidebarwidth});
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    // Get the screen width
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
+      width: screenWidth - sidebarwidth,
       padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-      color: Colors.white,
       decoration: const BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.only(
           bottomRight: Radius.circular(30),
           bottomLeft: Radius.circular(30),
@@ -20,59 +23,61 @@ class TopNavBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Title text adjusts size based on screen width
+          if (screenWidth < 1300)
+            IconButton(
+                onPressed: () {
+                  _toggleDrawer(context);
+                },
+                icon: const Icon(Icons.menu)),
           Text(
             'Title',
             style: TextStyle(
-              fontSize: screenWidth > 600 ? 24 : 18, // Larger font for bigger screens
+              fontSize: screenWidth > 600 ? 24 : 18,
               fontWeight: FontWeight.bold,
             ),
           ),
-          // Adjust the NavItem padding and spacing based on screen size
-          NavItem(
-            icon: Icon(Icons.message, size: screenWidth > 600 ? 28 : 20), // Icon size adjusts
-            title: 'Message',
-            fontSize: screenWidth > 600 ? 18 : 14, // Text size adjusts
-            padding: screenWidth > 600 ? 16 : 8, // Padding adjusts
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              NavItem(
+                icon: Icon(Icons.message, size: screenWidth > 600 ? 28 : 20),
+                title: screenWidth > 1300 ? 'Message' : '',
+                fontSize: screenWidth > 600 ? 18 : 14,
+                padding: screenWidth > 600 ? 16 : 8,
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              NavItem(
+                icon: Icon(Icons.shopping_cart,
+                    size: screenWidth > 600 ? 28 : 20),
+                title: screenWidth > 1300 ? 'Cart' : '',
+                fontSize: screenWidth > 600 ? 18 : 14,
+                padding: screenWidth > 600 ? 16 : 8,
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              NavItem(
+                icon: Icon(Icons.notifications_none,
+                    size: screenWidth > 600 ? 28 : 20),
+                title: screenWidth > 1300 ? 'notifications' : '',
+                fontSize: screenWidth > 600 ? 18 : 14,
+                padding: screenWidth > 600 ? 16 : 8,
+              ),
+              const ProfieViewWidget()
+            ],
           ),
         ],
       ),
     );
   }
-}
 
-class NavItem extends StatelessWidget {
-  final String title;
-  final Icon icon;
-  final double fontSize;
-  final double padding;
-
-  const NavItem({
-    super.key,
-    required this.title,
-    required this.icon,
-    required this.fontSize,
-    required this.padding,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(padding),
-      decoration: BoxDecoration(
-        border: Border.all(),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        children: [
-          icon,
-          const SizedBox(width: 10),
-          Text(
-            title,
-            style: TextStyle(fontSize: fontSize),
-          ),
-        ],
-      ),
-    );
+  void _toggleDrawer(BuildContext context) {
+    if (_scaffoldKey.currentState!.isDrawerOpen) {
+      Navigator.of(context).pop(); // Close the drawer
+    } else {
+      _scaffoldKey.currentState!.openDrawer(); // Open the drawer
+    }
   }
 }

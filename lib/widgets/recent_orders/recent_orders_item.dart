@@ -15,14 +15,11 @@ class RecentOrdersItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        // Calculate font size based on the maximum width of the container
         double fontSize = constraints.maxWidth * 0.04;
         double subtitleFontSize = fontSize * 0.8;
 
-        // Calculate sizes for other elements
         double avatarRadius = constraints.maxWidth * 0.06;
-        double trailingWidth =
-            constraints.maxWidth * 0.25; // Adjusted for better fit
+        double trailingWidth = constraints.maxWidth * 0.25;
 
         return ListTile(
           leading: CircleAvatar(

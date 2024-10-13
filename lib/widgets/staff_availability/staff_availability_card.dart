@@ -27,8 +27,7 @@ class StaffAvailabilityCard extends StatelessWidget {
               ),
               child: const SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.all(
-                      8.0), // Add padding for better layout on smaller screens
+                  padding: EdgeInsets.all(8.0),
                   child: Column(
                     children: [
                       SectionHeader(

@@ -48,16 +48,16 @@ class RevenueExpenseChart extends StatelessWidget {
                     ),
                     gridData: FlGridData(
                       show: true,
-                      drawHorizontalLine: true, // Y-axis grid lines
-                      horizontalInterval: 10, // Interval for Y-axis lines
+                      drawHorizontalLine: true,
+                      horizontalInterval: 10,
                       getDrawingHorizontalLine: (value) {
                         return FlLine(
                           color: Colors.grey.withOpacity(0.3),
                           strokeWidth: 1,
                         );
                       },
-                      drawVerticalLine: true, // X-axis grid lines
-                      verticalInterval: 1, // Interval for X-axis lines
+                      drawVerticalLine: true,
+                      verticalInterval: 1,
                       getDrawingVerticalLine: (value) {
                         return FlLine(
                           color: Colors.grey.withOpacity(0.3),
@@ -69,11 +69,11 @@ class RevenueExpenseChart extends StatelessWidget {
                       show: true,
                       border: const Border(
                         left: BorderSide(
-                          color: Colors.black, // Y-axis line
+                          color: Colors.black,
                           width: 1,
                         ),
                         bottom: BorderSide(
-                          color: Colors.black, // X-axis line
+                          color: Colors.black,
                           width: 1,
                         ),
                       ),

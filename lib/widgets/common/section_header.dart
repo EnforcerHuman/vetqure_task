@@ -11,8 +11,6 @@ class SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Set font size and padding based on screen size
-
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Row(

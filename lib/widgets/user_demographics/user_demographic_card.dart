@@ -31,10 +31,9 @@ class UserDemographicCard extends StatelessWidget {
                   title: 'User Demographics',
                   isFilter: true,
                 ),
-                // Use SizedBox to constrain the pie chart
                 SizedBox(
-                  height: cardHeight * 0.5, // Set a height for the pie chart
-                  width: cardWidth * 0.5, // Set a width for the pie chart
+                  height: cardHeight * 0.5,
+                  width: cardWidth * 0.5,
                   child: const UserDemographicsPieChartWidget(),
                 ),
                 _buildLegend(),

@@ -10,7 +10,7 @@ class RevenuExpenseTrackerCard extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         var isLargeScreen = constraints.maxWidth > 1300;
-        double cardHeight = isLargeScreen ? 300 : 500;
+        double cardHeight = isLargeScreen ? 300 : constraints.maxWidth;
         var media = MediaQuery.of(context).size;
         double cardWidth =
             media.width > 1300 ? media.width * 0.3 : media.width * 0.9;

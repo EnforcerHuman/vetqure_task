@@ -12,7 +12,7 @@ class RevenueCard extends StatelessWidget {
     double height = media.height;
     double cardHeight = height * 0.2;
     return SizedBox(
-      width: width / 1.22,
+      width: width / 1.21,
       child: Card(
         color: Colors.white,
         child: Center(

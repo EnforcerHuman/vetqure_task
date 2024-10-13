@@ -22,11 +22,11 @@ class StaffItem extends StatelessWidget {
             child: Image.asset('assets/images/staff.png'),
           ),
           title: Text(
-            'Order Id',
+            'Doctor',
             style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
-            'Date Placed',
+            'Role',
             style: TextStyle(fontSize: fontSize * 0.8),
           ),
           trailing: StatusIndicator(

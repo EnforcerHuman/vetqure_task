@@ -26,7 +26,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final bool isLargeScreen = screenWidth >= 1300;
+    final bool isLargeScreen = screenWidth >= 1400;
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 243, 240, 240),
@@ -40,8 +40,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   TopSection(isLargeScreen: isLargeScreen),
-
-                  // const RevenueCard(),
+                  const RevenueCard(),
                   const BottomSection(),
                 ],
               ),
@@ -84,7 +83,7 @@ class BottomSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
-    final bool isSmallScreen = media.width < 660;
+    final bool isSmallScreen = media.width < 1300;
 
     debugPrint("BottomSection isSmallScreen: $isSmallScreen");
 

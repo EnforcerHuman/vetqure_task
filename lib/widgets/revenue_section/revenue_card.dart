@@ -12,7 +12,7 @@ import 'package:vetqure_task/widgets/revenue_section/circular_progress_indicator
 //     double height = media.height;
 //     double cardHeight = height * 0.2;
 //     return SizedBox(
-//       width: width,
+//       width: 300,
 //       height: cardHeight,
 //       child: Card(
 //         elevation: 4,
@@ -62,56 +62,20 @@ import 'package:vetqure_task/widgets/revenue_section/circular_progress_indicator
 //     );
 //   }
 
-// class RevenueCard extends StatelessWidget {
-//   const RevenueCard({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     var media = MediaQuery.of(context).size;
-//     double width = media.width;
-//     double height = media.height;
-//     double cardHeight = height * 0.2;
-//     return SizedBox(
-//       width: width,
-//       child: Card(
-//         color: Colors.white,
-//         child: LayoutBuilder(builder: (context, constraints) {
-//           return ConstrainedBox(
-//             constraints: BoxConstraints(maxWidth: constraints.maxWidth),
-//             child: SingleChildScrollView(
-//               scrollDirection: Axis.horizontal,
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: indicatorsData.map((data) {
-//                   return buildCircularIndicator(
-//                     data['category'],
-//                     data['amount'],
-//                     data['percentage'],
-//                     cardHeight,
-//                     data['color'],
-//                   );
-//                 }).toList(),
-//               ),
-//             ),
-//           );
-//         }),
-//       ),
+//   Widget buildCircularIndicator(String category, String amount,
+//       double percentage, double cardHeight, Color color) {
+//     return CustomCircularProgressIndicator(
+//       category: category,
+//       amount: amount,
+//       percentage: percentage,
+//       backgroundColor: Colors.grey,
+//       foregroundColor: color,
+//       size: cardHeight,
+//       strokeWidth: 15,
 //     );
 //   }
 // }
 
-// Widget buildCircularIndicator(String category, String amount, double percentage,
-//     double cardHeight, Color color) {
-//   return CustomCircularProgressIndicator(
-//     category: category,
-//     amount: amount,
-//     percentage: percentage,
-//     backgroundColor: Colors.grey,
-//     foregroundColor: color,
-//     size: cardHeight,
-//     strokeWidth: 15,
-//   );
-// }
 class RevenueCard extends StatelessWidget {
   const RevenueCard({super.key});
 
@@ -122,32 +86,26 @@ class RevenueCard extends StatelessWidget {
     double height = media.height;
     double cardHeight = height * 0.2;
     return SizedBox(
-      width: width,
+      width: width / 1.2,
       child: Card(
         color: Colors.white,
-        child: LayoutBuilder(builder: (context, constraints) {
-          return ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: constraints.maxWidth),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Center(
-                // Wrap Row in Center
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: indicatorsData.map((data) {
-                    return buildCircularIndicator(
-                      data['category'],
-                      data['amount'],
-                      data['percentage'],
-                      cardHeight,
-                      data['color'],
-                    );
-                  }).toList(),
-                ),
-              ),
+        child: Center(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: indicatorsData.map((data) {
+                return buildCircularIndicator(
+                  data['category'],
+                  data['amount'],
+                  data['percentage'],
+                  cardHeight,
+                  data['color'],
+                );
+              }).toList(),
             ),
-          );
-        }),
+          ),
+        ),
       ),
     );
   }
@@ -155,13 +113,16 @@ class RevenueCard extends StatelessWidget {
 
 Widget buildCircularIndicator(String category, String amount, double percentage,
     double cardHeight, Color color) {
-  return CustomCircularProgressIndicator(
-    category: category,
-    amount: amount,
-    percentage: percentage,
-    backgroundColor: Colors.grey,
-    foregroundColor: color,
-    size: cardHeight,
-    strokeWidth: 15,
+  return Container(
+    margin: const EdgeInsets.symmetric(horizontal: 20),
+    child: CustomCircularProgressIndicator(
+      category: category,
+      amount: amount,
+      percentage: percentage,
+      backgroundColor: Colors.grey,
+      foregroundColor: color,
+      size: cardHeight,
+      strokeWidth: 15,
+    ),
   );
 }

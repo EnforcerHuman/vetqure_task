@@ -9,17 +9,14 @@ class RevenuExpenseTrackerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        // Get screen size details
-        var isLargeScreen = constraints.maxWidth > 660;
-        double cardHeight = isLargeScreen ? 300 : constraints.maxHeight * 0.9;
+        var isLargeScreen = constraints.maxWidth > 1300;
+        double cardHeight = isLargeScreen ? 300 : 500;
         var media = MediaQuery.of(context).size;
-        double cardWidth = isLargeScreen ? media.width * 0.3 : media.width - 50;
-        double smallsize = media.width - 50;
-        double largesize = media.width * 0.3;
-        ;
+        double cardWidth =
+            media.width > 1300 ? media.width * 0.3 : media.width * 0.9;
         return SizedBox(
           height: cardHeight,
-          width: isLargeScreen ? largesize : smallsize,
+          width: cardWidth,
           child: Card(
             elevation: 4,
             color: Colors.white,

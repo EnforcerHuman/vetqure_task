@@ -16,26 +16,23 @@ class StatusIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        double containerHeight = constraints.maxHeight *
-            0.15; // Set dynamic height (15% of parent height)
-        double containerWidth =
-            width; // Use passed width or constraints.maxWidth to make it more flexible
-        double fontSize =
-            containerHeight * 0.4; // Font size relative to container height
+        double containerHeight = constraints.maxHeight * 0.50;
+        double containerWidth = width;
+        double fontSize = containerHeight * 0.4;
 
         return Container(
-          height: containerHeight, // Dynamically set height
-          width: containerWidth, // Dynamically set width
+          height: containerHeight,
+          width: containerWidth,
           decoration: BoxDecoration(
             color: color,
-            borderRadius: BorderRadius.circular(30), // Rounded edges
+            borderRadius: BorderRadius.circular(30),
           ),
           child: Center(
             child: Text(
               text,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: fontSize, // Dynamically set font size
+                fontSize: fontSize,
                 fontWeight: FontWeight.bold,
               ),
             ),

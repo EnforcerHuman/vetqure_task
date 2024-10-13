@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vetqure_task/widgets/common/section_header.dart';
 import 'package:vetqure_task/widgets/staff_availability/staff_item.dart';
 
 class StaffAvailabilityCard extends StatelessWidget {
@@ -8,12 +9,11 @@ class StaffAvailabilityCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        var isLargeScreen = constraints.maxWidth > 600;
-        double cardHeight = isLargeScreen ? 300 : constraints.maxHeight * 0.9;
+        var isLargeScreen = constraints.maxWidth > 1300;
+        double cardHeight = isLargeScreen ? 300 : 500;
         var media = MediaQuery.of(context).size;
-        double cardWidth = isLargeScreen
-            ? media.width * 0.27
-            : media.width * 0.9; // Adjust width based on screen size
+        double cardWidth =
+            media.width > 1300 ? media.width * 0.25 : media.width * 0.9;
 
         return Center(
           child: SizedBox(
@@ -25,12 +25,14 @@ class StaffAvailabilityCard extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: SingleChildScrollView(
+              child: const SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.all(
+                  padding: EdgeInsets.all(
                       8.0), // Add padding for better layout on smaller screens
                   child: Column(
-                    children: const [
+                    children: [
+                      SectionHeader(
+                          title: 'Staff Availability', isFilter: false),
                       StaffItem(
                           buttonText: 'Available', buttonColor: Colors.red),
                       SizedBox(height: 10),
